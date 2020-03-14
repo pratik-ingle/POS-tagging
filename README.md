@@ -1,60 +1,6 @@
+## POS Tagging 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-PRATIK SURESH INGLE
-ROLL # : 17188
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-POS Tagging Assignment
-
-In this assignment instead of creating files I have used lists for simplicity if we need to create file for results the we can use file write format present in python same as first step of reading brown.txt  with write and read data type. 
+Here instead of creating files I have used lists for simplicity if we need to create file for results the we can use file write format present in python same as first step of reading brown.txt  with write and read data type. 
 
 1.Corpus 
 Dividing corpus into two parts- 
@@ -96,12 +42,12 @@ A. Unigram tagger
 
 Separating tags from brown_train corpus 
 
-# getting frequency of tags from brown_train
+## getting frequency of tags from brown_train
 import collections
 types =  collections.Counter(brown_train)
 #print(types)  # types is in the form of directories
 
-# converting dictionary into two dimentional array "a"
+## converting dictionary into two dimentional array "a"
 a = []
 for value in types.items() :
     a.append(value)
@@ -121,7 +67,7 @@ for i in a:
     j = x.rsplit('/')
     b.append(j)
     t += 1 
-# len of b is 64413
+#len of b is 64413
     
 #cosidering only maximum frequent word-tag pairs from array "b" 
 temp =[]
@@ -135,13 +81,13 @@ print(max_fre_word_tag)  # now the size of training set come down to 54068 from 
 
 Separating tags from Brown_test corpus
 
-# word_tags pair from brown_test corpus
-# getting frequency of tags from brown_test
+## word_tags pair from brown_test corpus
+## getting frequency of tags from brown_test
 import collections
 types =  collections.Counter(brown_test)
 #print(types)  # types is in the form of directories
 
-# converting dictionary into two dimentional array "a"
+#converting dictionary into two dimentional array "a"
 s = []
 for value in types.items() :
     s.append(value)
@@ -161,7 +107,7 @@ for i in s:
     j = x.rsplit('/')
     test_words.append(j)
     t += 1 
-# len of test_words1 is 10061    
+len of test_words1 is 10061    
 print(test_words)  # now the size of test set come down to 10061 from 49948 word_tags pairs
 
  
@@ -200,7 +146,7 @@ f.close()
 
 Predicting tags in sequence for test set
 
-# seprating tags and words from brown _test
+## seprating tags and words from brown _test
 q = []
 for i in brown_test:
     j = i.rsplit('/')
@@ -231,7 +177,7 @@ By using counter and sorting we will only consider unique tag pairs and MLE from
 
 For bigram tagger have used only 46 tangs by MLE out of 183 tags so bigram tagger accuracy (31.84%) is much less compare to unigram tagger (86.07%)
   
-# bigram tagging model of brown_train corpus
+## bigram tagging model of brown_train corpus
 # seprating tags and words and counting each word tag pair for brown _train
 q = []
 for i in brown_train:
@@ -255,12 +201,12 @@ for i in range(x-1):
     bigram_tag.append(p)
     
     
-# getting frequency of tags from brown_train
+## getting frequency of tags from brown_train
 from collections import Counter
 types =  Counter(tuple(x) for x in bigram_tag)
 #print(types)  # types is in the form of directories
 
-# converting dictionary into two dimentional array "a"
+#converting dictionary into two dimentional array "a"
 s = []
 for value in types.items() :
     s.append(value)
@@ -284,14 +230,14 @@ for l in q:
         bi_max_fre_word_tag.append(l)
     
 print(bi_max_fre_word_tag) 
- # now the size of training set come down to 519 from 1111244 word_tags pairs since we are considering MLE 
+ #now the size of training set come down to 519 from 1111244 word_tags pairs since we are considering MLE 
 
 
 size of training set come down to 519 from 1111244 bigram_tags pairs since we are considering MLE of bigram tag pairs
 
 Forming bigram pairs of test set for predictions
 
-# forming bigram model as list from test corpus
+## forming bigram model as list from test corpus
 # seprating tags and words and counting each word tag pair for brown _test
 q = []
 for i in brown_test:
@@ -343,7 +289,7 @@ for i in seq_unigram_tag:
     if(i[1] == 'unk'):
         temp = [i , 'nn']
         unk_uni.append(temp)
-# accuracy of unknown words
+## accuracy of unknown words
 temp = 0
 for i in unk_uni:
     if (i[0][0][1] == i[1]):
@@ -392,7 +338,7 @@ Unused tags are marked as 'not in prediction set'
 
 Confusion matrix for unigram
 
-# confusion matrix for unigram
+## confusion matrix for unigram
 temp = [] 
 for i in seq_unigram_tag:
     w =[i[0][1] , i[1]]
@@ -407,7 +353,7 @@ print(conf_matrix)
 
 For bigram confusion matrix
 
-# confusion matrix for bigram
+## confusion matrix for bigram
 temp = [] 
 for i in bigram_tag:
     w =[i[0][1][1] , i[1]]
@@ -432,7 +378,7 @@ for i in seq_unigram_tag:
         unk_uni.append(temp)
 
 
-# accuracy of unknown words
+## accuracy of unknown words
 temp = 0
 for i in unk_uni:
     if (i[0][0][1] == i[1]):
@@ -489,7 +435,7 @@ from collections import Counter
 types =  Counter(tuple(x) for x in bigram_tag_exp)
 #print(types)  # types is in the form of directories
 
-# converting dictionary into two dimentional array "a"
+#converting dictionary into two dimentional array "a"
 s = []
 for value in types.items() :
     s.append(value)
